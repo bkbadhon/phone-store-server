@@ -6,7 +6,7 @@ require('dotenv').config()
 const Port = 3000;
 
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'https://phone-store-5ff48.web.app/',
     credentials: true, 
   };
 
