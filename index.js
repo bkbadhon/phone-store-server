@@ -7,6 +7,8 @@ const Port = 3000;
 
 const corsOptions = {
     origin: 'https://phone-store-5ff48.web.app/',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true, 
   };
 
