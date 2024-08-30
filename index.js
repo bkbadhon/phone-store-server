@@ -3,10 +3,10 @@ const cors = require("cors");
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const app = express();
 require('dotenv').config()
-const Port = 3000;
+const Port = 5000;
 
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173','https://phone-store-5ff48.web.app'],
     credentials: true, 
   };
 
@@ -28,7 +28,7 @@ const client = new MongoClient(uri, {
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
+        // await client.connect();
         
      const phoneCollection = client.db("phone-store").collection("phones");
      const cartCollection = client.db("phone-store").collection("carts");
@@ -71,6 +71,8 @@ async function run() {
         const result = await cartCollection.insertOne(data)
         res.send(result)
       })
+
+     
 
       app.get('/cart', async(req,res)=>{
         const email =req.query.email;
@@ -129,8 +131,8 @@ async function run() {
 
 
     // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    // await client.db("admin").command({ ping: 1 });
+    // console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
     // await client.close();
